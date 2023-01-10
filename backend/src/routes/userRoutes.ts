@@ -1,2 +1,8 @@
-import { Express, Request, Response, NextFunction } from "express";
-const routes = (app: Express) => {};
+import { Router } from "express";
+
+import UserController from "../controllers/userController";
+const router = Router();
+
+router.post("/register", UserController.register);
+
+export default router;
