@@ -1,4 +1,4 @@
-import { User } from "../db/config";
+import { UserModel } from "../models/user";
 import { Express, Request, Response, NextFunction } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 const { JWT_SECRET } = process.env;
 
 interface SignInRequest extends Request {
-  body: { username: string; password: string };
+  body: { username: string; password: string; isRemembering: boolean };
 }
 
 class UserController {
@@ -16,7 +16,8 @@ class UserController {
     if (!isPasswordValid) throw new Error("Invalid password");
   }
 
-  static generateToken(user_id: string): string {
+  static generateToken(user_id: string, isRemembering: boolean): string | null {
+    if (!isRemembering) return null;
     const paramsToAssignToToken = { user_id: user_id };
 
     const jwtSignOptions = { expiresIn: "7d" };
@@ -35,7 +36,7 @@ class UserController {
     const hashedPassword = await bcrypt.hash(password, 12);
 
     try {
-      const user = new User({
+      const user = new UserModel({
         username,
         hashedPassword,
       });
@@ -51,12 +52,12 @@ class UserController {
   }
 
   static async login(req: SignInRequest, res: Response) {
-    const { username, password } = req.body;
+    const { username, password, isRemembering } = req.body;
 
     if (!username) throw new Error("Username is required");
     if (!password) throw new Error("Password is required");
 
-    const [user] = await User.find({ username: username });
+    const [user] = await UserModel.find({ username: username });
     if (!user) throw new Error("User not registered");
 
     const { hashedPassword } = user;
@@ -65,9 +66,10 @@ class UserController {
       UserController.verifyPassword(password, hashedPassword);
 
       const { id } = user;
-      const token = UserController.generateToken(id);
+      const token = UserController.generateToken(id, isRemembering);
 
-      res.status(200).send({ access_token: token });
+      if (token) res.status(200).send({ access_token: token });
+      else res.status(200).send({ message: "Usuário logado com sucecsso" });
     } catch (err: any) {
       res.status(500).json({ error: err.message });
     }
