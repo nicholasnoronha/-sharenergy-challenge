@@ -1,4 +1,4 @@
-import RugController from "../controllers/rugController";
+import RugController from "../controllers/RugController";
 import Router from "express";
 const rugRouter = Router();
 
