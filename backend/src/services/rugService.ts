@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Result } from "../interfaces/RugResponse";
 
-class rugService {
+class RugService {
   static async getRandomUsers(results: number): Promise<Result[]> {
     const URL = `http://randomuser.me/api/?results=${results}`;
     const response = await axios.get(URL);
@@ -9,4 +9,4 @@ class rugService {
   }
 }
 
-export default rugService;
+export default RugService;

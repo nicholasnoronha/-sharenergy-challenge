@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Result } from "../interfaces/RugResponse";
-import rugService from "../services/rugService";
+import RugService from "../services/RugService";
 import { paginatedResults } from "../utils/paginatedResults";
 
 class RugController {
@@ -9,7 +9,7 @@ class RugController {
     const limit = Number(req.query.limit);
 
     try {
-      const response: Result[] = await rugService.getRandomUsers(100);
+      const response: Result[] = await RugService.getRandomUsers(100);
 
       const results = paginatedResults(page, limit, response);
 

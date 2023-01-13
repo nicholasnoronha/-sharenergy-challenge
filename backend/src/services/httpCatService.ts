@@ -1,5 +1,5 @@
 import axios from "axios";
-import http from "http";
+
 class HttpCatService {
   static async getStatus(httpCode: number): Promise<any> {
     const URL = `http://http.cat/${httpCode}`;
