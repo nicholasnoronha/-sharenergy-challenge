@@ -1,3 +1,4 @@
+import { AxiosError } from "axios";
 import { UserModel } from "../models/user";
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
@@ -70,8 +71,9 @@ class UserController {
 
       if (token) res.status(200).send({ access_token: token });
       else res.status(200).send({ message: "Usuário logado com sucecsso" });
-    } catch (err: any) {
-      res.status(500).json({ error: err.message });
+    } catch (err) {
+      const error = err as AxiosError;
+      res.status(500).json(error.message);
     }
   }
 }

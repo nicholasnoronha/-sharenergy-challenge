@@ -1,3 +1,4 @@
+import { AxiosError } from "axios";
 import { Request, Response } from "express";
 import { Result } from "../interfaces/RugResponse";
 import RugService from "../services/RugService";
@@ -14,8 +15,9 @@ class RugController {
       const results = paginatedResults(page, limit, response);
 
       res.status(201).send({ users: results });
-    } catch (err: any) {
-      res.status(500).json({ error: err.message });
+    } catch (err) {
+      const error = err as AxiosError;
+      res.status(500).json(error.message);
     }
   }
 }
