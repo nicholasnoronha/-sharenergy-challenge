@@ -46,9 +46,10 @@ class UserController {
         () => console.log("One entry added"),
         (err: any) => console.log(err)
       );
-      res.status(201).send("Usuário registrado com sucesso");
+
+      return res.status(201).send("Usuário registrado com sucesso");
     } catch (err: any) {
-      res.status(500).json({ error: err.message });
+      return res.status(500).json({ error: err.message });
     }
   }
 
@@ -69,11 +70,13 @@ class UserController {
       const { id } = user;
       const token = UserController.generateToken(id, isRemembering);
 
-      if (token) res.status(200).send({ access_token: token });
-      else res.status(200).send({ message: "Usuário logado com sucecsso" });
+      if (token) return res.status(200).send({ access_token: token });
+
+      return res.status(200).send({ message: "Usuário logado com sucecsso" });
     } catch (err) {
       const error = err as AxiosError;
-      res.status(500).json(error.message);
+
+      return res.status(500).json(error.message);
     }
   }
 }

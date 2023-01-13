@@ -14,10 +14,11 @@ class RugController {
 
       const results = paginatedResults(page, limit, response);
 
-      res.status(201).send({ users: results });
+      return res.status(201).send({ users: results });
     } catch (err) {
       const error = err as AxiosError;
-      res.status(500).json(error.message);
+
+      return res.status(500).json(error.message);
     }
   }
 }

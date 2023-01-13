@@ -6,10 +6,12 @@ class HttpCatController {
   static async getStatus(req: Request, res: Response) {
     try {
       const response = await HttpCatService.getStatusImage(404);
-      res.send(response); //base64 cat img - 'data:image/jpg;base64'
+
+      return res.send(response);
     } catch (err) {
       const error = err as AxiosError;
-      res.status(500).json(error.message);
+
+      return res.status(500).json(error.message);
     }
   }
 }
