@@ -1,16 +1,12 @@
 import axios from "axios";
 
 class HttpCatService {
-  static async getStatus(httpCode: number): Promise<any> {
+  static async getStatusImage(httpCode: number): Promise<string> {
     const URL = `http://http.cat/${httpCode}`;
 
-    return axios
-      .get(URL, {
-        responseType: "arraybuffer",
-      })
-      .then((response) =>
-        Buffer.from(response.data, "binary").toString("base64")
-      );
+    const response = await axios.get(URL, { responseType: "arraybuffer" });
+
+    return Buffer.from(response.data, "binary").toString("base64");
   }
 }
 
