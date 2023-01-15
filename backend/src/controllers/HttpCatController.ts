@@ -8,7 +8,7 @@ class HttpCatController {
       const response = await HttpCatService.getStatusImage(404);
 
       return res.send(response);
-    } catch (err) {
+    } catch (err: unknown) {
       const error = err as AxiosError;
 
       return res.status(500).json(error.message);

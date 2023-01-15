@@ -15,7 +15,7 @@ class RugController {
       const results = paginatedResults(page, limit, response);
 
       return res.status(201).send({ users: results });
-    } catch (err) {
+    } catch (err: unknown) {
       const error = err as AxiosError;
 
       return res.status(500).json(error.message);
