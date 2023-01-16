@@ -1,9 +1,12 @@
-import { createBrowserRouter } from "react-router-dom";
-import Login from "../pages/Login";
+import React from "react";
+import { useAuth } from "../contexts/auth.context";
+import AuthRoutes from "./auth.routes";
+import AppRoutes from "./app.routes";
 
-export default createBrowserRouter([
-  {
-    path: "/login",
-    element: <Login />,
-  },
-]);
+const Router: React.FC = () => {
+  const { token } = useAuth();
+
+  return !!token ? <AppRoutes /> : <AuthRoutes />;
+};
+
+export default Router;
