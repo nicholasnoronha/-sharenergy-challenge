@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 
 import jwt from "jsonwebtoken";
 
-class AssignDecoded {
+class Authorization {
   static async run(request: Request, response: Response, next: NextFunction) {
     try {
       const { authorization: token } = request.headers;
@@ -33,4 +33,4 @@ class AssignDecoded {
   }
 }
 
-export default AssignDecoded;
+export default Authorization;

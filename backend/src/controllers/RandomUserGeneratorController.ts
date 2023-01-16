@@ -1,16 +1,17 @@
 import { AxiosError } from "axios";
 import { Request, Response } from "express";
-import { Result } from "../interfaces/RugResponse";
-import RugService from "../services/RugService";
+import { Result } from "../interfaces/RandomUserGeneratorResponse";
+import RandomUserGeneratorService from "../services/RandomUserGeneratorService";
 import { paginatedResults } from "../utils/paginatedResults";
 
-class RugController {
+class RandomUserGeneratorController {
   static async getRandomUserGeneratorData(req: Request, res: Response) {
     const page = Number(req.query.page);
     const limit = Number(req.query.limit);
 
     try {
-      const response: Result[] = await RugService.getRandomUsers(100);
+      const response: Result[] =
+        await RandomUserGeneratorService.getRandomUsers(100);
 
       const results = paginatedResults(page, limit, response);
 
@@ -23,4 +24,4 @@ class RugController {
   }
 }
 
-export default RugController;
+export default RandomUserGeneratorController;
