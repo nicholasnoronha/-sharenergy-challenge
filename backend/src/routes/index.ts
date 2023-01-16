@@ -7,7 +7,7 @@ import clientRouter from "./clientRoutes";
 
 const routes = Router();
 
-routes.use("", userRouter);
+routes.use(userRouter);
 routes.use("/random-user-generator", randomUserGeneratorRouter);
 routes.use("/cat", httpCatRouter);
 routes.use("/dog", randomDogRouter);
