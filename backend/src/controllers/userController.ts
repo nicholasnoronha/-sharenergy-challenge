@@ -54,10 +54,10 @@ class UserController {
   static async login(req: SignInRequest, res: Response) {
     const { username, password } = req.body;
 
-    if (!username) throw new Error("Username is required");
-    if (!password) throw new Error("Password is required");
-
     try {
+      if (!username) throw new Error("Username is required");
+      if (!password) throw new Error("Password is required");
+
       const [user] = await UserModel.find({ username: username });
 
       if (!user) throw new Error("User not registered");
