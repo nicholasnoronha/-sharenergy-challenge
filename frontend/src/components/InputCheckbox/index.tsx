@@ -3,16 +3,16 @@ import Container from "./styles";
 type Props = {
   id?: string;
   label?: string;
-  type?: string;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
 };
 
-const InputLabel: React.FC<Props> = (props) => {
+const InputCheckbox: React.FC<Props> = (props) => {
   return (
     <Container className="input-group">
-      <input type={props.type || "text"} id={props.id} />
+      <input type="checkbox" id={props.id} onChange={props.onChange} />
       <label htmlFor={props.id}>{props.label}</label>
     </Container>
   );
 };
 
-export default InputLabel;
+export default InputCheckbox;
