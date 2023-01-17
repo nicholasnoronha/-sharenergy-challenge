@@ -1,11 +1,12 @@
 import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
+import Dashboard from "../pages/Dashboard";
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route />
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="*" element={<Navigate to="/dashboard" replace />} />
     </Routes>
   );
 };
