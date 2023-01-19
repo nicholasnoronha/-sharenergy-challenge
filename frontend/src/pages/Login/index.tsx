@@ -1,8 +1,15 @@
 import React, { useState } from "react";
-import { Button, Input } from "../../components";
-import { redirect } from "react-router-dom";
-import InputCheckbox from "../../components/InputCheckbox";
+import {
+  Title,
+  Subtitle,
+  Input,
+  Column,
+  Button,
+  InputCheckbox,
+} from "../../components";
+import Container from "./styles";
 import { useAuth } from "../../contexts/auth.context";
+import { redirect } from "react-router-dom";
 
 const Login: React.FC = (props) => {
   const { login } = useAuth();
@@ -30,22 +37,45 @@ const Login: React.FC = (props) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <Input onChange={handleUserChange} placeholder="Usuário" />
-        <Input
-          onChange={handlePasswordChange}
-          type="password"
-          placeholder="Senha"
-        />
-        <InputCheckbox
-          id="remember-me"
-          label="Lembrar-me"
-          onChange={handleIsRememberingChange}
-        />
-        <Button type="submit">Login</Button>
+    <Container>
+      <form onSubmit={handleSubmit} className="form-container">
+        <form className="form-content">
+          <div style={{ marginBottom: 30 }}>
+            <Title>Entrar</Title>
+            <Subtitle>
+              Realize o login com as credenciais informadas no desafio.
+            </Subtitle>
+          </div>
+          <Column>
+            <Input
+              onChange={handleUserChange}
+              placeholder="Usuário"
+              type="text"
+            />
+            <Input
+              onChange={handlePasswordChange}
+              placeholder="Senha"
+              type="password"
+            />
+            <InputCheckbox
+              onChange={handleIsRememberingChange}
+              label="Lembrar-me"
+            />
+          </Column>
+        </form>
+        <Button type="submit" style={{ marginTop: 20 }}>
+          Logar
+        </Button>
       </form>
-    </div>
+      <div className="slogan-container">
+        <div>
+          <h2 className="slogan-title">
+            Aplicação criada com intuito de resolver o desafio da Sharenergy.
+          </h2>
+          <p className="slogan-subtitle">Janeiro, 2023</p>
+        </div>
+      </div>
+    </Container>
   );
 };
 

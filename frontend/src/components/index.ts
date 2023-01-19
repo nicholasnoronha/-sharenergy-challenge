@@ -1,5 +1,8 @@
 import Button from "./Button";
 import Input from "./Input";
-import InputLabel from "./InputCheckbox";
+import InputCheckbox from "./InputCheckbox";
+import Title from "./Title";
+import Subtitle from "./Subtitle";
+import Column from "./Column";
 
-export { Button, Input, InputLabel };
+export { Button, Input, InputCheckbox, Title, Subtitle, Column };
