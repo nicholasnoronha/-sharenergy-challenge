@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { randomUserGeneratorService } from "../../services/randomUserGeneratorService";
+import React, { useState, useEffect } from "react";
+import { Title } from "../../components";
 import { useAuth } from "../../contexts/auth.context";
+import Container from "./styles";
+import { randomUserGeneratorService } from "../../services/randomUserGeneratorService";
+import UserCard from "./components/UserCard";
 
 const Dashboard: React.FC = (props) => {
   const { token } = useAuth();
   const [randomUsers, setRandomUsers] = useState<any>();
+  const [page, setPage] = useState();
 
   const fetchRandomUsers = async () => {
     const users = await randomUserGeneratorService.getRandomUsers(token!);
+    console.log("users", users!.data.users);
     setRandomUsers(users!.data.users.results);
   };
 
@@ -16,26 +21,16 @@ const Dashboard: React.FC = (props) => {
   }, []);
 
   return (
-    <div>
-      {randomUsers?.map((user: any) => {
-        return (
-          <div style={{ border: "1px solid black" }}>
-            <p style={{ fontWeight: "bold" }}>
-              {user.name.first} {user.name.last}, {user.dob.age} anos
-            </p>
-            <p>Email: {user.email}</p>
-            <p>Cellphone: {user.cell}</p>
-            <p>
-              Location: {user.location.city}, {user.location.state}
-            </p>
-            <p>
-              Address: {user.location.street.name},{" "}
-              {user.location.street.number}
-            </p>
-          </div>
-        );
-      })}
-    </div>
+    <Container>
+      <div className="content">
+        <Title style={{ marginBottom: 30 }}>Lista de usuários aleatórios</Title>
+        <div className="users-grid">
+          {randomUsers?.map((user: any) => {
+            return <UserCard user={user} />;
+          })}
+        </div>
+      </div>
+    </Container>
   );
 };
 
