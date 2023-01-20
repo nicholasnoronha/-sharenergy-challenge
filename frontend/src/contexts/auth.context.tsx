@@ -8,7 +8,9 @@ interface ContextType {
     password: string,
     isRemembering: boolean
   ): Promise<void>;
+  logout(): void;
   token: string | null;
+  username: string;
 }
 
 const AuthContext = createContext<ContextType>({} as ContextType);
@@ -16,6 +18,7 @@ const AuthContext = createContext<ContextType>({} as ContextType);
 export const AuthProvider: React.FC<DefaultProps> = (props) => {
   const lastSessionToken = localStorage.getItem("access_token");
   const [token, setToken] = useState<string | null>(lastSessionToken);
+  const [username, setUsername] = useState<string>("");
 
   const login = async (
     username: string,
@@ -27,13 +30,22 @@ export const AuthProvider: React.FC<DefaultProps> = (props) => {
 
     if (access_token) {
       setToken(access_token);
+      setUsername(username);
 
       if (isRemembering) localStorage.setItem("access_token", access_token);
     }
   };
 
+  const logout = () => {
+    if (lastSessionToken) {
+      localStorage.clear();
+    }
+
+    setToken(null);
+  };
+
   return (
-    <AuthContext.Provider value={{ token, login }}>
+    <AuthContext.Provider value={{ token, login, logout, username }}>
       {props.children}
     </AuthContext.Provider>
   );

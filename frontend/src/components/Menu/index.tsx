@@ -1,12 +1,14 @@
 import React from "react";
 import Container from "./styles";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/auth.context";
 
 const Menu: React.FC = (props) => {
+  const { logout, username } = useAuth();
   const navigate = useNavigate();
   return (
     <Container>
-      Olá, username
+      Olá, {username}
       <ul>
         <li>
           <a onClick={() => navigate("/dashboard")} className="nav-item">
@@ -22,12 +24,14 @@ const Menu: React.FC = (props) => {
           </a>
         </li>
         <li>
-          <a onClick={() => navigate("")} className="nav-item">
+          <a onClick={() => navigate("/clients")} className="nav-item">
             4. Lista de clientes
           </a>
         </li>
       </ul>
-      Logout
+      <a onClick={() => logout()} className="nav-item">
+        Logout
+      </a>
     </Container>
   );
 };
