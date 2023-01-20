@@ -9,6 +9,8 @@ class Authorization {
 
       const { JWT_SECRET } = process.env;
 
+      if (request.path === "/api-docs/") return next();
+
       if (request.path === "/register") return next();
 
       if (request.path === "/login") return next();
