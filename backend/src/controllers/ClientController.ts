@@ -12,7 +12,7 @@ class ClientController {
 
       await client.save();
 
-      return res.status(201).send("Cliente adicionado com sucesso");
+      return res.status(201).send("Cliente adicionado com sucesso.");
     } catch (err: unknown) {
       const error = err as Error;
 
@@ -26,9 +26,17 @@ class ClientController {
     try {
       const client = await ClientModel.findOne({ _id: clientId });
 
-      return res.status(201).send({ client });
+      if (!client) throw new Error("Cliente não encontrado.");
+
+      return res.status(200).send({ client });
     } catch (err: unknown) {
       const error = err as Error;
+
+      if (error.message.includes("encontrado"))
+        return res.status(406).json({ error: error.message });
+
+      if (error.message.includes("_id"))
+        return res.status(400).json({ error: "Id inválido." });
 
       return res.status(500).json({ error: error.message });
     }
@@ -38,7 +46,7 @@ class ClientController {
     try {
       const clients = await ClientModel.find();
 
-      return res.status(201).send({ clients });
+      return res.status(200).send({ clients });
     } catch (err: unknown) {
       const error = err as Error;
 
@@ -69,11 +77,17 @@ class ClientController {
       const response = await ClientModel.deleteOne({ _id: clientId });
 
       if (response.deletedCount === 0)
-        return res.status(400).send("Este cliente já foi excluído");
+        return res.status(400).send("Cliente não encontrado.");
 
-      return res.status(201).send("Cliente excluído com sucesso");
+      return res.status(200).send("Cliente excluído com sucesso.");
     } catch (err: unknown) {
       const error = err as Error;
+
+      if (error.message.includes("encontrado"))
+        return res.status(406).json({ error: error.message });
+
+      if (error.message.includes("_id"))
+        return res.status(400).json({ error: "Id inválido." });
 
       return res.status(500).json({ error: error.message });
     }
