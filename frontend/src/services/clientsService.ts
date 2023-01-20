@@ -54,7 +54,7 @@ export class clientsService {
     user_id: string
   ) {
     try {
-      return await axios.post(`${API}/client/edit/${user_id}`, {
+      return await axios.put(`${API}/client/edit/${user_id}`, {
         headers: {
           Authorization: access_token,
         },

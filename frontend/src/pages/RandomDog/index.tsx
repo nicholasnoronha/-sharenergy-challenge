@@ -7,33 +7,29 @@ import SuspenseImageOrGif from "../../components/SuspenseImageOrGif";
 
 const RandomDog: React.FC = () => {
   const { token } = useAuth();
-  const [randomDogImageOrGif, setRandomDogImageOrGif] = useState<string>("");
+  const [url, setUrl] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const handleClick = () => {
-    fetchRandomDog();
+  const handleClick = async () => {
+    await fetchRandomDog();
   };
 
   const fetchRandomDog = async () => {
-    setRandomDogImageOrGif("");
+    setUrl("");
     setIsLoading(true);
 
     const response = await randomDogService.getRandomImageOrGif(token!);
 
     if (!response) return alert("404 Not Found");
     console.log("response.data", response.data);
-    setRandomDogImageOrGif(response.data);
+    setUrl(response.data);
   };
 
   return (
     <div>
       <Button onClick={handleClick}>Clique Aqui!!!</Button>
       <React.Suspense fallback={isLoading && <Loading />}>
-        <SuspenseImageOrGif
-          src={randomDogImageOrGif}
-          height="500"
-          width={400}
-        />
+        <SuspenseImageOrGif src={url} height="500" width={400} />
       </React.Suspense>
     </div>
   );
