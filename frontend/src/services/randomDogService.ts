@@ -11,7 +11,7 @@ export class randomDogService {
       });
     } catch (err: unknown) {
       const error = err as AxiosError;
-      console.log("error", error);
+
       alert(error.message);
     }
   }

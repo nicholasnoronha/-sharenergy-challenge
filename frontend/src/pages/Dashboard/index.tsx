@@ -4,15 +4,16 @@ import { useAuth } from "../../contexts/auth.context";
 import Container from "./styles";
 import { randomUserGeneratorService } from "../../services/randomUserGeneratorService";
 import UserCard from "./components/UserCard";
+import RandomUser from "../../interfaces/RandomUser";
 
 const Dashboard: React.FC = (props) => {
   const { token } = useAuth();
-  const [randomUsers, setRandomUsers] = useState<any>();
+  const [randomUsers, setRandomUsers] = useState<RandomUser[]>();
   const [page, setPage] = useState();
 
   const fetchRandomUsers = async () => {
     const users = await randomUserGeneratorService.getRandomUsers(token!);
-    console.log("users", users!.data.users);
+
     setRandomUsers(users!.data.users.results);
   };
 
@@ -25,9 +26,9 @@ const Dashboard: React.FC = (props) => {
       <div className="content">
         <Title style={{ marginBottom: 30 }}>Lista de usuários aleatórios</Title>
         <div className="users-grid">
-          {randomUsers?.map((user: any) => {
-            return <UserCard user={user} />;
-          })}
+          {randomUsers?.map((user: RandomUser, index: number) => (
+            <UserCard key={index} user={user} />
+          ))}
         </div>
       </div>
     </Container>

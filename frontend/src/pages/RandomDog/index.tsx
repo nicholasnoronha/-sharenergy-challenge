@@ -21,7 +21,7 @@ const RandomDog: React.FC = () => {
     const response = await randomDogService.getRandomImageOrGif(token!);
 
     if (!response) return alert("404 Not Found");
-    console.log("response.data", response.data);
+
     setUrl(response.data);
   };
 

@@ -20,7 +20,6 @@ export const ClientProvider: React.FC<DefaultProps> = (props) => {
   const fetchClients = async () => {
     const response: Client[] = await clientsService.getClients(token!);
 
-    console.log("clients", response);
     setClients(response);
   };
 

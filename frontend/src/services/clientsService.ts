@@ -14,7 +14,7 @@ export class clientsService {
       return response.data.clients;
     } catch (err: unknown) {
       const error = err as AxiosError;
-      console.log("error", error);
+
       alert(error.message);
     }
   }
@@ -28,7 +28,7 @@ export class clientsService {
       });
     } catch (err: unknown) {
       const error = err as AxiosError;
-      console.log("error", error);
+
       alert(error.message);
     }
   }
@@ -43,7 +43,7 @@ export class clientsService {
       });
     } catch (err: unknown) {
       const error = err as AxiosError;
-      console.log("error", error);
+
       alert(error.message);
     }
   }
@@ -62,7 +62,7 @@ export class clientsService {
       });
     } catch (err: unknown) {
       const error = err as AxiosError;
-      console.log("error", error);
+
       alert(error.message);
     }
   }
@@ -76,7 +76,7 @@ export class clientsService {
       });
     } catch (err: unknown) {
       const error = err as AxiosError;
-      console.log("error", error);
+
       alert(error.message);
     }
   }

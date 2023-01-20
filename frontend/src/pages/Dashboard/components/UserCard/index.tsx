@@ -1,9 +1,15 @@
 import React from "react";
+import RandomUser from "../../../../interfaces/RandomUser";
 import Container from "./styles";
 
-const UserCard: React.FC<any> = (props) => {
+interface UserCardProps {
+  user: RandomUser;
+  key: number;
+}
+
+const UserCard: React.FC<UserCardProps> = (props) => {
   return (
-    <Container>
+    <Container key={props.key}>
       <div className="align-center">
         <img className="user-pic" src={props.user.picture.large} />
         <p className="card-title">

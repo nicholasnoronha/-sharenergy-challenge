@@ -39,7 +39,7 @@ const Login: React.FC = (props) => {
   return (
     <Container>
       <form onSubmit={handleSubmit} className="form-container">
-        <form className="form-content">
+        <div className="form-content">
           <div style={{ marginBottom: 30 }}>
             <Title>Entrar</Title>
             <Subtitle>
@@ -62,7 +62,7 @@ const Login: React.FC = (props) => {
               label="Lembrar-me"
             />
           </Column>
-        </form>
+        </div>
         <Button type="submit" style={{ marginTop: 20 }}>
           Logar
         </Button>
