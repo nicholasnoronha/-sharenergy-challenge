@@ -26,9 +26,13 @@ const Dashboard: React.FC = (props) => {
       <div className="content">
         <Title style={{ marginBottom: 30 }}>Lista de usuários aleatórios</Title>
         <div className="users-grid">
-          {randomUsers?.map((user: RandomUser, index: number) => (
-            <UserCard key={index} user={user} />
-          ))}
+          {randomUsers?.map((user: RandomUser) => {
+            return (
+              <div key={user.login.uuid}>
+                <UserCard user={user} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </Container>

@@ -29,7 +29,14 @@ const Menu: React.FC = (props) => {
           </a>
         </li>
       </ul>
-      <a onClick={() => logout()} className="nav-item">
+      <a
+        style={{
+          marginBottom: "2vh",
+          maxWidth: "55px",
+        }}
+        onClick={() => logout()}
+        className="nav-item"
+      >
         Logout
       </a>
     </Container>

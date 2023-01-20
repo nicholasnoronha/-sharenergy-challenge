@@ -4,33 +4,32 @@ import Container from "./styles";
 
 interface UserCardProps {
   user: RandomUser;
-  key: number;
 }
 
-const UserCard: React.FC<UserCardProps> = (props) => {
+const UserCard: React.FC<UserCardProps> = ({ user }) => {
   return (
-    <Container key={props.key}>
+    <Container>
       <div className="align-center">
-        <img className="user-pic" src={props.user.picture.large} />
+        <img className="user-pic" src={user.picture.large} />
         <p className="card-title">
-          {props.user.name.first} {props.user.name.last},{" "}
-          <span className="user-age">{props.user.dob.age} anos</span>
+          {user.name.first} {user.name.last},{" "}
+          <span className="user-age">{user.dob.age} anos</span>
         </p>
       </div>
       <div>
         <p className="user-data">
-          <span className="label">Email:</span> {props.user.email}
+          <span className="label">Email:</span> {user.email}
         </p>
         <p className="user-data">
-          <span className="label">Cellphone:</span> {props.user.cell}
+          <span className="label">Cellphone:</span> {user.cell}
         </p>
         <p className="user-data">
-          <span className="label">Location:</span> {props.user.location.city},{" "}
-          {props.user.location.state}
+          <span className="label">Location:</span> {user.location.city},{" "}
+          {user.location.state}
         </p>
         <p className="user-data">
-          <span className="label">Address:</span>{" "}
-          {props.user.location.street.name}, {props.user.location.street.number}
+          <span className="label">Address:</span> {user.location.street.name},{" "}
+          {user.location.street.number}
         </p>
       </div>
     </Container>
