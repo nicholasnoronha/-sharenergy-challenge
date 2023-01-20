@@ -4,8 +4,9 @@ import { statusMessages } from "./statusMessages";
 import { httpCatService } from "../../services/httpCatService";
 import StatusImage from "../../components/StatusImage";
 import Loading from "../../components/Loading";
+import Container from "./styles";
 
-const HttpStatus: React.FC = (props) => {
+const HttpStatus: React.FC = () => {
   const { token } = useAuth();
   const [httpStatus, setHttpStatus] = useState<any>();
   const [httpCatImage, setHttpCatImage] = useState<string | undefined>("");
@@ -37,8 +38,8 @@ const HttpStatus: React.FC = (props) => {
   }, [httpStatus]);
 
   return (
-    <div>
-      <select onChange={handleSelectChange}>
+    <Container>
+      <select className="cat-select" onChange={handleSelectChange}>
         {statusMessages.map((status: string, index: number) => {
           if (status === "Selecione um status")
             return (
@@ -54,9 +55,14 @@ const HttpStatus: React.FC = (props) => {
           );
         })}
       </select>
-      {isLoading && <Loading />}
-      <StatusImage httpCatImage={httpCatImage} httpStatus={httpStatus} />
-    </div>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className="image-container">
+          <StatusImage httpCatImage={httpCatImage} httpStatus={httpStatus} />
+        </div>
+      )}
+    </Container>
   );
 };
 
