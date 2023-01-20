@@ -12,9 +12,12 @@ const clientSchema = new mongoose.Schema({
     required: true,
     lowercase: true,
     unique: true,
+    match: /.+\@.+\..+/,
   },
   phone: {
-    type: Number,
+    type: String,
+    mimlength: 8,
+    maxlength: 20,
     trim: true,
     required: true,
   },
