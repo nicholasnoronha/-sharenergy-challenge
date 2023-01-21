@@ -8,6 +8,7 @@ interface ContextType {
     password: string,
     isRemembering: boolean
   ): Promise<void>;
+  register(username: string, password: string): Promise<void>;
   logout(): void;
   token: string | null;
   username: string;
@@ -44,8 +45,12 @@ export const AuthProvider: React.FC<DefaultProps> = (props) => {
     setToken(null);
   };
 
+  const register = async (username: string, password: string) => {
+    await userService.register(username, password);
+  };
+
   return (
-    <AuthContext.Provider value={{ token, login, logout, username }}>
+    <AuthContext.Provider value={{ token, login, logout, username, register }}>
       {props.children}
     </AuthContext.Provider>
   );
