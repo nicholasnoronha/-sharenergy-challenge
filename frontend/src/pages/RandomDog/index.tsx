@@ -5,6 +5,7 @@ import { Button } from "../../components";
 import { randomDogService } from "../../services/randomDogService";
 import SuspenseImageOrGif from "../../components/SuspenseImageOrGif";
 import Container from "./styles";
+import { Title } from "../../components";
 
 const RandomDog: React.FC = () => {
   const { token } = useAuth();
@@ -27,14 +28,12 @@ const RandomDog: React.FC = () => {
 
   return (
     <Container>
-      <Button
-        style={{ width: "auto", marginBottom: "1vh" }}
-        onClick={handleClick}
-      >
-        Clique Aqui!!!
+      <Title style={{ marginBottom: 10 }}>Gerador de imagens</Title>
+      <Button style={{ marginBottom: 10 }} onClick={handleClick}>
+        Clique aqui!
       </Button>
       <React.Suspense fallback={isLoading && <Loading />}>
-        <SuspenseImageOrGif src={url} height="600" width="500" />
+        <SuspenseImageOrGif src={url} height="500" width={400} />
       </React.Suspense>
     </Container>
   );
