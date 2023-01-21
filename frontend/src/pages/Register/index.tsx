@@ -5,11 +5,12 @@ import {
   Input,
   Column,
   Button,
-  InputCheckbox,
+  LabelButton,
+  // InputCheckbox,
 } from "../../components";
 import Container from "./styles";
 import { useAuth } from "../../contexts/auth.context";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Register: React.FC = (props) => {
   const { register } = useAuth();
@@ -73,12 +74,12 @@ const Register: React.FC = (props) => {
             />
           </Column>
         </div>
-        <Button onClick={handleSwitchToLogin} style={{ marginLeft: 20 }}>
-          Já é registrado? Realize o Login.
-        </Button>
         <Button type="submit" style={{ marginTop: 20 }}>
           Confirmar
         </Button>
+        <LabelButton onClick={handleSwitchToLogin}>
+          Já é registrado? Realize o Login.
+        </LabelButton>
       </form>
       <div className="slogan-container">
         <div>

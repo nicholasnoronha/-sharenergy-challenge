@@ -9,6 +9,7 @@ import InputGroup from "./InputGroup";
 import InputSearch from "./InputSearch/styles";
 import Loading from "./Loading";
 import InputCheckbox from "./InputCheckbox";
+import LabelButton from "./LabelButton";
 
 export {
   Button,
@@ -21,5 +22,6 @@ export {
   InputGroup,
   InputSearch,
   InputCheckbox,
+  LabelButton,
   Loading,
 };

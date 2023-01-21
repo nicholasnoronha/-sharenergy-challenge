@@ -6,13 +6,16 @@ import {
   Column,
   Button,
   InputCheckbox,
+  LabelButton,
 } from "../../components";
 import Container from "./styles";
 import { useAuth } from "../../contexts/auth.context";
 import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const Login: React.FC = (props) => {
+const Login: React.FC = () => {
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   const [user, setUser] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -30,10 +33,13 @@ const Login: React.FC = (props) => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     await login(user, password, isRemembering);
 
     redirect("/dashboard");
+  };
+
+  const handleSwitchToRegister = () => {
+    navigate("/register");
   };
 
   return (
@@ -66,6 +72,9 @@ const Login: React.FC = (props) => {
         <Button type="submit" style={{ marginTop: 20 }}>
           Logar
         </Button>
+        <LabelButton onClick={handleSwitchToRegister}>
+          Novo por aqui? Registre-se
+        </LabelButton>
       </form>
       <div className="slogan-container">
         <div>

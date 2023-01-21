@@ -25,7 +25,7 @@ const AppRoutes = () => {
           icon="charm:menu-hamburger"
           className="hamburger-icon"
           style={{
-            color: "white",
+            color: "var(--dark-blue)",
           }}
           width="32"
           height="32"
