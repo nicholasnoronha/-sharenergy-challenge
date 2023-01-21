@@ -4,12 +4,12 @@ const Loading = () => {
   return (
     <div
       style={{
-        position: "fixed",
-        width: "100vw",
-        height: "100vh",
+        maxWidth: 400,
+        maxHeight: 400,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        marginTop: "20%",
       }}
     >
       <img src={loadingGif} style={{ width: "4rem" }} />

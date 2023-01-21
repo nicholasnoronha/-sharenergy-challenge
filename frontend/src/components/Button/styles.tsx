@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
-const Button = styled.button`
+const Container = styled.button`
   border-radius: 0;
   background: var(--dark-blue);
   color: var(--white);
-  width: 100%;
+  width: fit-content;
+  height: fit-content;
 `;
 
-export default Button;
+export default Container;
