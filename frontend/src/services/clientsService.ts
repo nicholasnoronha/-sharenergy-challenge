@@ -35,11 +35,10 @@ export class clientsService {
 
   static async addClient(access_token: string, client: Client) {
     try {
-      return await axios.post(`${API}/client/add`, {
+      return await axios.post(`${API}/client/add`, client, {
         headers: {
           Authorization: access_token,
         },
-        client,
       });
     } catch (err: unknown) {
       const error = err as AxiosError;
@@ -54,11 +53,10 @@ export class clientsService {
     user_id: string
   ) {
     try {
-      return await axios.put(`${API}/client/edit/${user_id}`, {
+      return await axios.put(`${API}/client/edit/${user_id}`, client, {
         headers: {
           Authorization: access_token,
         },
-        client,
       });
     } catch (err: unknown) {
       const error = err as AxiosError;
