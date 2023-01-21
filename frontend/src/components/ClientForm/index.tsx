@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Client from "../../interfaces/Client";
-import Button from "../Button";
+import Button from "../Button/styles";
 import { useClient } from "../../contexts/client.context";
 import Modal from "../Modal";
 

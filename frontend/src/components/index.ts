@@ -1,8 +1,23 @@
-import Button from "./Button";
-import Input from "./Input";
-import InputCheckbox from "./InputCheckbox";
-import Title from "./Title";
-import Subtitle from "./Subtitle";
-import Column from "./Column";
+import Button from "./Button/styles";
+import CancelButton from "./CancelButton";
+import Column from "./Column/styles";
+import Input from "./Input/styles";
+import Subtitle from "./Subtitle/styles";
+import Title from "./Title/styles";
+import Modal from "./Modal";
+import InputGroup from "./InputGroup";
+import InputSearch from "./InputSearch/styles";
+import Loading from "./Loading";
 
-export { Button, Input, InputCheckbox, Title, Subtitle, Column };
+export {
+  Button,
+  CancelButton,
+  Column,
+  Input,
+  Subtitle,
+  Title,
+  Modal,
+  InputGroup,
+  InputSearch,
+  Loading,
+};
