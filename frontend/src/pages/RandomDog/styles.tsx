@@ -11,8 +11,13 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   min-width: 80vw;
+
   .image-container {
     max-height: 400px;
+  }
+  @media (max-width: 1000px) {
+    width: 100vw;
+    min-height: 70vh;
   }
 `;
 

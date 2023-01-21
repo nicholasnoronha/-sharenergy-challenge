@@ -8,7 +8,6 @@ const Container = styled.div`
   min-height: 280px;
   display: flex;
   align-items: center;
-  // justify-content: center;
   flex-direction: column;
   min-width: 80vw;
 
@@ -19,6 +18,10 @@ const Container = styled.div`
     font-size: 1rem;
     background: var(--white);
     font-family: "Poppins", sans-serif;
+  }
+  @media (max-width: 1000px) {
+    width: 100vw;
+    min-height: 70vh;
   }
 `;
 

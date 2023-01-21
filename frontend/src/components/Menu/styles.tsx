@@ -28,6 +28,10 @@ const Container = styled.div`
     color: var(--blue);
     border-bottom: 1px solid var(--dark-blue);
   }
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 export default Container;

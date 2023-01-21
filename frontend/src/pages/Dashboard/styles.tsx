@@ -78,6 +78,11 @@ const Container = styled.div`
     }
   }
 
+  @media (max-width: 1000px) {
+    width: 100vw;
+    min-height: 70vh;
+  }
+
   @media (max-width: 800px) {
     .users-grid {
       grid-template-columns: 1fr;
@@ -88,10 +93,6 @@ const Container = styled.div`
     .header {
       flex-direction: column;
     }
-  }
-  @media (max-width: 600px) {
-    // height: calc(60vh - 130px);
-    // max-height: calc(60vh - 130px);
   }
 `;
 
