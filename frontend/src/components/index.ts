@@ -8,6 +8,7 @@ import Modal from "./Modal";
 import InputGroup from "./InputGroup";
 import InputSearch from "./InputSearch/styles";
 import Loading from "./Loading";
+import InputCheckbox from "./InputCheckbox";
 
 export {
   Button,
@@ -19,5 +20,6 @@ export {
   Modal,
   InputGroup,
   InputSearch,
+  InputCheckbox,
   Loading,
 };

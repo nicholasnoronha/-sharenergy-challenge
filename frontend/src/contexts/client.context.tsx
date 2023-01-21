@@ -1,17 +1,17 @@
-import React, { createContext, useState, useContext, useEffect } from "react";
-import Client from "../interfaces/Client";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import DefaultProps from "../interfaces/DefaultProps";
-import { clientsService } from "../services/clientsService";
+import Client from "../interfaces/Client";
 import { useAuth } from "./auth.context";
-
+import { clientsService } from "../services/clientsService";
 interface ContextType {
   clients: Client[];
   fetchClients: () => void;
   addClient: (client: Client) => void;
   updateClient: (client: Client) => void;
+  deleteClient: (clientId: string) => void;
 }
 
-const ClientContext = createContext<ContextType>({} as ContextType);
+const ClientContext = createContext<Partial<ContextType>>({});
 
 export const ClientProvider: React.FC<DefaultProps> = (props) => {
   const [clients, setClients] = useState<Client[]>([]);
@@ -19,7 +19,6 @@ export const ClientProvider: React.FC<DefaultProps> = (props) => {
 
   const fetchClients = async () => {
     const response: Client[] = await clientsService.getClients(token!);
-
     setClients(response);
   };
 
@@ -33,13 +32,18 @@ export const ClientProvider: React.FC<DefaultProps> = (props) => {
     fetchClients();
   };
 
+  const deleteClient = async (clientId: string) => {
+    await clientsService.deleteClient(token!, clientId);
+    fetchClients();
+  };
+
   useEffect(() => {
     fetchClients();
   }, []);
 
   return (
     <ClientContext.Provider
-      value={{ clients, fetchClients, addClient, updateClient }}
+      value={{ clients, fetchClients, addClient, updateClient, deleteClient }}
     >
       {props.children}
     </ClientContext.Provider>
