@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 import DefaultProps from "../../interfaces/DefaultProps";
-import Container from "./styles";
+import "./styles.css";
 
 interface ModalProps extends DefaultProps {
   onClose: () => void;
@@ -22,7 +22,7 @@ const portalElement = document.getElementById("overlays")!;
 
 const Modal: React.FC<ModalProps> = (props) => {
   return (
-    <Container>
+    <>
       {ReactDOM.createPortal(
         <Backdrop onClose={props.onClose} />,
         portalElement
@@ -31,7 +31,7 @@ const Modal: React.FC<ModalProps> = (props) => {
         <Overlay>{props.children}</Overlay>,
         portalElement
       )}
-    </Container>
+    </>
   );
 };
 
