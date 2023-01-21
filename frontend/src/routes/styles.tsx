@@ -12,6 +12,7 @@ const Container = styled.div`
     right: 1px;
     top: 0.5rem;
     display: none;
+    cursor: pointer;
   }
 
   .row {
