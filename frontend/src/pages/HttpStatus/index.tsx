@@ -3,8 +3,8 @@ import { useAuth } from "../../contexts/auth.context";
 import { statusMessages } from "./statusMessages";
 import { httpCatService } from "../../services/httpCatService";
 import StatusImage from "../../components/StatusImage";
-import Loading from "../../components/Loading";
 import Container from "./styles";
+import { Title, Loading } from "../../components";
 
 const HttpStatus: React.FC = () => {
   const { token } = useAuth();
@@ -39,6 +39,7 @@ const HttpStatus: React.FC = () => {
 
   return (
     <Container>
+      <Title>Http Cat Status Code</Title>
       <select className="cat-select" onChange={handleSelectChange}>
         {statusMessages.map((status: string, index: number) => {
           if (status === "Selecione um status")
@@ -55,6 +56,7 @@ const HttpStatus: React.FC = () => {
           );
         })}
       </select>
+
       {isLoading ? (
         <Loading />
       ) : (

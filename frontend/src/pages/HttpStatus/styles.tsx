@@ -4,14 +4,14 @@ const Container = styled.div`
   color: var(--dark-blue);
   background-color: var(--white);
   padding: 3rem 1rem;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.25);
   border-radius: 17px;
   min-height: 280px;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  // justify-content: center;
+  flex-direction: column;
   min-width: 80vw;
-  max-width: 80vw;
+
   .cat-select {
     border: 1px solid var(--dark-blue);
     border-radius: 5px;
