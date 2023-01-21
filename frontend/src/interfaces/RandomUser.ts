@@ -1,10 +1,6 @@
 export default interface RandomUser {
   gender: string;
-  name: {
-    title: string;
-    first: string;
-    last: string;
-  };
+  name: string;
   location: {
     street: {
       number: number;

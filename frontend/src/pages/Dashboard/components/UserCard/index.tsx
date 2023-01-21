@@ -12,8 +12,7 @@ const UserCard: React.FC<UserCardProps> = ({ user }) => {
       <div className="align-center">
         <img className="user-pic" src={user.picture.large} />
         <p className="card-title">
-          {user.name.first} {user.name.last},{" "}
-          <span className="user-age">{user.dob.age} anos</span>
+          {user.name} <span className="user-age">{user.dob.age} anos</span>
         </p>
       </div>
       <div>
