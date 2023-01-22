@@ -1,0 +1,51 @@
+.modal_backdrop {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.modal_container {
+  position: fixed;
+  top: 10%;
+  background-color: var(--white);
+  padding: 1rem;
+  border-radius: 14px;
+  z-index: 30;
+  animation: slide-down 300ms ease-out forwards;
+  color: var(--black);
+  width: 80%;
+  max-width: 40rem;
+}
+.modal_content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+@media (min-width: 760px) {
+  .modal_container {
+    left: calc(50% - 20rem);
+  }
+}
+
+@media (max-width: 760px) {
+  .modal_container {
+    left: 1rem;
+    right: 1rem;
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

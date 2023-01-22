@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+:root {
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --dark-blue: #153243;
+  --blue: #284b63;
+  --white: #eef0eb;
+  --greenish: #b4b8ab;
+}
+
+:root::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+:root::-webkit-scrollbar-track {
+  background: var(--blue);
+}
+
+:root::-webkit-scrollbar-thumb {
+  background-color: var(--greenish);
+  border-radius: 20px;
+}
+
+.first-layer {
+  background-color: var(--dark-blue);
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+.second-layer {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  opacity: 0.2;
+}
+
+.App {
+  height: 100vh;
+}
+
+a {
+  font-weight: 500;
+  color: var(--dark-blue);
+  cursor: pointer;
+}
+a:hover {
+  color: var(--greenish);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+p {
+  margin: 0;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+@media (max-width: 1000px) {
+  img {
+    width: 400px;
+  }
+}
+
+@media (max-width: 500px) {
+  img {
+    max-height: 350px;
+    width: 350px;
+  }
+  video {
+    width: 350px;
+    height: 500px;
+  }
+}
+
+.row {
+  display: flex;
+  gap: 4rem;
+  justify-content: space-between;
+}
+
+.input-group-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 30px 0;
+  gap: 0 4rem;
+}
+
+input:focus {
+  outline: none;
+}
+
+@media (max-width: 600px) {
+  .input-group-container {
+    grid-template-columns: 1fr;
+  }
+}
